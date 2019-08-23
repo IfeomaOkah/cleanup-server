@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 function protect(req,res,next) {
-  debugger
+  
   if(req.session.user) next()
   else next(createError(401))
 }
@@ -58,14 +58,14 @@ app.use('/api/api', require('./routes/clean-routes'));
 app.use('/api/api', protect, require('./routes/event-routes'));
 
 app.use(function(err, req, res, next) {
-  debugger
+  
   if(err) res.status(err.status).json({message: err.message})
   else res.status(500).json({message: "Something went wrong!"})
 })
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/build/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 app.listen(process.env.PORT, () => {

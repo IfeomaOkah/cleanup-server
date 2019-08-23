@@ -19,7 +19,7 @@ router.get('/cleanups', (req, res, next) => {
 });
 
 router.get('/cleanups/:id', (req, res, next) => {
-  debugger
+  
   Event.findById(req.params.id)
   .populate("people")
   .populate("cleaner")

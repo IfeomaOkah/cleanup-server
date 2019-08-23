@@ -43,10 +43,10 @@ router.post("/create_event", (req,res,next)=> {
 
 
 router.post('/join/:id', (req, res, next) => {
-  debugger
+  
   Event.findByIdAndUpdate(req.params.id, {$push: { people: req.session.user.id }}, { new: true })
   .then(updatedEvent => {
-    debugger
+    
     return User.findByIdAndUpdate(req.session.user.id, {$push: { upcoming: updatedEvent._id }}, { new: true })
   })
   .then(updatedUser => {
@@ -58,12 +58,12 @@ router.post('/join/:id', (req, res, next) => {
 });
 
 router.get('/user-profile', (req, res, next) => {
-  debugger
+  
   User.findOne({_id: req.session.user.id})
   .populate("events")
   .populate("upcoming")
   .then(user => {
-    debugger
+    
     res.json(user)
   })
   .catch(err => {
