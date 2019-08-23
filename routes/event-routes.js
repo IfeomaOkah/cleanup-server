@@ -9,7 +9,6 @@ const createError = require('http-errors')
 
 router.get('/profile', (req, res, next)=>{
   Event.create({
-    element: req.body.element,
     headline: req.body.headline,
     date: req.body.date,
     description: req.body.description,
@@ -25,7 +24,6 @@ router.get('/profile', (req, res, next)=>{
 });
 
 router.post("/create_event", (req,res,next)=> {
-  debugger
   let newEvent = req.body;
   newEvent.cleaner = mongoose.Types.ObjectId(req.session.user.id);
 

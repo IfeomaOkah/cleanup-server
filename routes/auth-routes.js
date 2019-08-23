@@ -18,7 +18,7 @@ router.post("/signup", (req,res,next)=> {
         })
 })
 
-router.post("/login", (req,res,next)=> {
+router.post("/", (req,res,next)=> {
     User.findOne({$or: [{username: req.body.username}, {email: req.body.username}]})
         .then((user)=> {
             if(!user) next(createError(401), "Invalid credentials.");
