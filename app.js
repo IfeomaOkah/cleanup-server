@@ -65,7 +65,7 @@ app.use(function(err, req, res, next) {
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
-  res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(__dirname + "/public/build/index.html");
 });
 
 app.listen(process.env.PORT, () => {
